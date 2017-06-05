@@ -1,4 +1,4 @@
-public class OneOneFive
+public class Ch1_1_5
 {
         public static void main(String[] args)
         {
