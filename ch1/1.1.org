@@ -204,3 +204,13 @@ public class Fibonacci
 }
 
 #+END_SRC
+* 1.1.20
+See Ch1_1_20.java in this directory.
+
+#+BEGIN_SRC sh
+javac Ch1_1_20.java
+java Ch1_1_20 5
+> ln(5): 4
+java Ch1_1_20 8
+> ln(8): 10
+#+END_SRC
