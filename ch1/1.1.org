@@ -69,3 +69,138 @@ for (int i = target; i > 0; i /= 2)
 
 I looked at the solution. :-(
 I'm still not sure why it's "(i%2) + out" instead of "out + (i%2)".
+* 1.1.10
+(I read too far...)
+It doesn't allocate appropriate storage for a[].
+* 1.1.11
+#+BEGIN_SRC java
+  for (int row=0; row<d2; row++)
+  {
+          for (int col=0; col<d1; col++)
+          {
+                  String out = String.format("[%d][%d]", row, col);
+                  if (dat[row][col])
+                  {
+
+                          System.out.print(out + "*");
+                  }
+                  else
+                  {
+                          System.out.print(out + " ");
+                  }
+          }
+          System.out.println("");
+  }
+#+END_SRC
+* 1.1.12
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+* 1.1.13
+Same as previous one, just switch loops.
+#+BEGIN_SRC java
+  for (int col=0; col<d1; col++)
+  {
+          for (int row=0; row<d2; row++)
+          {
+                  String out = String.format("[%d][%d]", col, row);
+                  if (dat[row][col])
+                  {
+
+                          System.out.print(out + "*");
+                  }
+                  else
+                  {
+                          System.out.print(out + " ");
+                  }
+          }
+          System.out.println("");
+  }
+#+END_SRC
+* 1.1.14
+#+BEGIN_SRC java
+  static int lg(int N)
+  {
+          int log = 0;
+          int sum = 1;
+          for(; sum < N; sum *= 2, log++);
+          if (sum > N)
+                  log -= 1;
+
+          return log;
+  }
+#+END_SRC
+* 1.1.15
+#+BEGIN_SRC java
+  static int[] histogram(int[] a, int M)
+  {
+          int[] res = new int[M];
+
+          for(int i=0; i<M; i++)
+          {
+                  res[i] = 0;
+                  for(int j=0; j<a.length; j++)
+                  {
+                          if(a[j] == i)
+                                  res[i]++;
+                  }
+          }
+
+          return res;
+  }
+#+END_SRC
+* 1.1.16
+311361142246
+* 1.1.17
+The exit condition comes after the recursive computation, so we always do the
+expensive computation.
+(Looked at answer.)
+Because the exit condition occurs after the computation, the function never
+exits.
+* 1.1.18
+mystery(2, 25) == 50
+mystery(3, 11) == 33
+
+mystery computes the multiplication of a and b.
+
+After modifications, mystery computes a to the power of b.
+* 1.1.19
+Somewhere between 50 and 60 on my home desktop.
+#+BEGIN_SRC java
+import java.util.Arrays;
+public class Fibonacci
+{
+        private static long[] cache;
+        public static long F(int N)
+        {
+                if (N == 0) return 0;
+                if (N == 1) return 1;
+                if(cache[N] == -1)
+                {
+                        cache[N] = F(N-1) + F(N-2);
+                }
+                return cache[N];
+        }
+
+        public static void main(String[] args)
+        {
+                int N = Integer.parseInt(args[0]);
+                cache = new long[N];
+                Arrays.fill(cache, -1);
+
+                for (int i = 0; i < N; i++)
+                {
+                        String out = String.format("%d %d", i, F(i));
+                        System.out.println(out);
+                }
+        }
+}
+
+#+END_SRC
